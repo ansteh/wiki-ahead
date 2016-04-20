@@ -23,7 +23,8 @@
     "url": "https://github.com/ansteh/wiki-ahead/issues"
   },
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "got": "^6.3.0"
   },
   "devDependencies": {}
 }

@@ -11,38 +11,32 @@ function sug(response){
     });
   };
 
-  var Wiki = function(callback){
-    var domain = 'https://api.datamuse.com';
-
+  var OpenWikiSearch = function(callbackName){
     var openSearch = function(query){
-      console.log('openSearch');
-      //encodeURIComponent
-      var url = 'http://de.wikipedia.org/w/api.php?action=opensearch&search='+query+'&format=json&callback='+callback;
+      var url = 'http://de.wikipedia.org/w/api.php?action=opensearch&search='+query+'&format=json&callback='+callbackName;
       jQuery('head').append('<script src="'+url+'" type="text/javascript"></script>');
     };
 
     return {
-      suggest: function(query){
-        return openSearch(query);
-      }
+      search: openSearch
     };
   };
 
-  var OpenWiki = Wiki('sug');
-
+  //var OpenWiki = OpenWikiSearch('sug');
 
   var source = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     identify: function(obj) { console.log(obj); return obj.word; },
     remote: {
-      url: 'https://api.datamuse.com/sug?s=%QUERY',
+      //url: 'https://api.datamuse.com/sug?s=%QUERY',
+      url: '/opensearch?query=%QUERY',
       wildcard: '%QUERY'
     }
   });
 
   jQuery(document).ready(function(){
-    OpenWiki.suggest('andre');
+    OpenWiki.search('andre');
 
     jQuery('#suggestion .typeahead').typeahead({
       hint: true,
@@ -59,7 +53,7 @@ function sug(response){
             'unable to find any Best Picture winners that match the current query',
           '</div>'
         ].join('\n'),
-        suggestion: Handlebars.compile('<div>{{word}} <span style="float: right;">{{score}}</span></div>')
+        suggestion: Handlebars.compile('<div>{{word}}</div>')
       }
     });
 
