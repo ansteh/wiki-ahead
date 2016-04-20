@@ -1,0 +1,29 @@
+{
+  "name": "wiki-ahead",
+  "version": "0.0.0",
+  "description": "Autocomplete web service featuring typeahead.js and wikipedia query search API",
+  "main": "index.js",
+  "scripts": {},
+  "engines": {
+    "node": ">=4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ansteh/wiki-ahead.git"
+  },
+  "keywords": [
+    "wiki",
+    "wikipedia",
+    "typeahead",
+    "web service"
+  ],
+  "author": "Andre Stehle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ansteh/wiki-ahead/issues"
+  },
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {}
+}
