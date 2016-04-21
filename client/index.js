@@ -36,7 +36,7 @@ function sug(response){
   });
 
   jQuery(document).ready(function(){
-    OpenWiki.search('andre');
+    //OpenWiki.search('andre');
 
     jQuery('#suggestion .typeahead').typeahead({
       hint: true,
